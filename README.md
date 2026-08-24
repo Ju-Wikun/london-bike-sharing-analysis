@@ -1,5 +1,7 @@
 # 伦敦共享单车运营分析
 
+[![quality](https://github.com/Ju-Wikun/london-bike-sharing-analysis/actions/workflows/quality.yml/badge.svg)](https://github.com/Ju-Wikun/london-bike-sharing-analysis/actions/workflows/quality.yml)
+
 基于 2020-2025 年 TfL Santander Cycles 行程、Open-Meteo 小时天气和英国公共假期数据，构建可复现的 DuckDB 分析数仓、SQL 分析案例和 5 个 ECharts 看板。项目重点不是堆图表，而是把业务问题、指标口径、数据质量、查询结果和解释边界连成一条可核验的数据链路。
 
 **技术栈：** Python · pandas · DuckDB · SQL · ECharts/pyecharts · pytest
@@ -45,7 +47,11 @@
 | 跨站 Top20 覆盖率 | 0.513% |
 | 候选规范站点 | 888 |
 
-全量结果证明：Top20 只能展示最强的少数连接，不能代表整体流动结构。详细决策、数据模型和看板改造顺序见 [OD 分析重构方案](docs/od_analysis_redesign_plan.md)。现有 Sankey 已先改为排除同站归还并显示样本覆盖率；后续页签将直接读取全量聚合表。
+全量结果证明：Top20 只能展示最强的少数连接，不能代表整体流动结构。详细决策、数据模型和看板改造顺序见 [OD 分析重构方案](docs/od_analysis_redesign_plan.md)。新的流向结构和站点诊断页已直接读取全量聚合表；跨站 Sankey 固定排除同站归还并显示覆盖率。
+
+![全量流向结构看板](docs/assets/flow_structure_dashboard.png)
+
+主导航现已使用两个全量页签：`流向结构` 展示同站/跨站总体、TopN覆盖率、Pareto曲线和跨站Sankey；`站点诊断` 展示净流量、小时失衡、同站次数/比例和时长分层。[查看站点诊断截图](docs/assets/station_diagnostics_dashboard.png)。旧样本站点页不再出现在主导航中。
 
 ## 数据流程
 

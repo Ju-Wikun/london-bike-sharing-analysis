@@ -26,4 +26,4 @@ SELECT
 FROM self_routes AS r
 JOIN departures AS d USING (station_key)
 JOIN dim_station AS s USING (station_key)
-ORDER BY r.trip_count DESC;
+ORDER BY r.trip_count DESC, s.canonical_name;
