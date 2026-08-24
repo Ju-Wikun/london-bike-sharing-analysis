@@ -1,0 +1,12 @@
+﻿metric,value
+source_rows,58865471.0
+valid_duration_rows,58333200.0
+excluded_incomplete_date_rows,22152.0
+od_valid_rows,58311048.0
+candidate_stations,888.0
+od_pairs,632144.0
+cross_od_pairs,631262.0
+same_station_trips,2392658.0
+cross_station_trips,55918390.0
+same_station_rate,0.04103267017255461
+cross_station_rate,0.9589673298274454

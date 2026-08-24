@@ -26,6 +26,13 @@ def load_sources(conn: duckdb.DuckDBPyConnection) -> None:
     batches = sql_path(DATA_DIR / "metadata" / "source_batch_audit.csv")
     coverage = sql_path(DATA_DIR / "metadata" / "hour_coverage_exceptions.csv")
     anomalies = sql_path(DATA_DIR / "metadata" / "known_data_anomalies.csv")
+    station_aliases = sql_path(DATA_DIR / "metadata" / "station_alias_audit.csv")
+    od_dir = DATA_DIR / "processed" / "od"
+    dim_station = sql_path(od_dir / "dim_station.parquet")
+    fact_od_flow = sql_path(od_dir / "fact_od_flow.parquet")
+    fact_station_period = sql_path(od_dir / "fact_station_period.parquet")
+    fact_same_station = sql_path(od_dir / "fact_same_station.parquet")
+    od_summary = sql_path(PROJECT_ROOT / "output" / "od_analysis" / "summary_metrics.csv")
 
     conn.execute(
         f"""
@@ -33,6 +40,53 @@ def load_sources(conn: duckdb.DuckDBPyConnection) -> None:
         SELECT CAST(ts AS TIMESTAMP), CAST(cnt AS BIGINT)
         FROM read_csv_auto('{rides}', header = true)
         WHERE CAST(ts AS DATE) BETWEEN DATE '2020-01-01' AND DATE '2025-12-31'
+        """
+    )
+    conn.execute(
+        f"""
+        INSERT INTO dim_station
+        SELECT * FROM read_parquet('{dim_station}')
+        """
+    )
+    conn.execute(
+        f"""
+        INSERT INTO station_alias
+        SELECT
+            station_key,
+            normalized_name,
+            source_station_id,
+            original_name,
+            CAST(endpoint_mentions AS BIGINT),
+            CAST(first_seen AS TIMESTAMP),
+            CAST(last_seen AS TIMESTAMP),
+            CAST(source_id_key_count AS INTEGER),
+            lower(requires_review) = 'true'
+        FROM read_csv_auto('{station_aliases}', header = true, all_varchar = true)
+        """
+    )
+    conn.execute(
+        f"""
+        INSERT INTO fact_od_flow
+        SELECT * FROM read_parquet('{fact_od_flow}')
+        """
+    )
+    conn.execute(
+        f"""
+        INSERT INTO fact_station_period
+        SELECT * FROM read_parquet('{fact_station_period}')
+        """
+    )
+    conn.execute(
+        f"""
+        INSERT INTO fact_same_station
+        SELECT * FROM read_parquet('{fact_same_station}')
+        """
+    )
+    conn.execute(
+        f"""
+        INSERT INTO od_build_metric
+        SELECT metric, CAST(value AS DOUBLE)
+        FROM read_csv_auto('{od_summary}', header = true)
         """
     )
     conn.execute(
@@ -277,6 +331,58 @@ def validation_rows(conn: duckdb.DuckDBPyConnection) -> list[tuple[str, object, 
             WHERE r.ts IS NULL
             """,
             82,
+        ),
+        ("od_candidate_stations", "SELECT COUNT(*) FROM dim_station", 888),
+        ("od_station_alias_rows", "SELECT COUNT(*) FROM station_alias", 2902),
+        (
+            "od_station_alias_review_rows",
+            "SELECT COUNT(*) FROM station_alias WHERE requires_review",
+            97,
+        ),
+        ("od_pairs", "SELECT COUNT(*) FROM fact_od_flow", 632144),
+        (
+            "od_analysis_ready_trips",
+            "SELECT SUM(trip_count) FROM fact_od_flow",
+            58311048,
+        ),
+        (
+            "od_same_station_trips",
+            "SELECT SUM(trip_count) FROM fact_od_flow WHERE same_station",
+            2392658,
+        ),
+        (
+            "od_cross_station_trips",
+            "SELECT SUM(trip_count) FROM fact_od_flow WHERE NOT same_station",
+            55918390,
+        ),
+        (
+            "od_station_outflow_total",
+            "SELECT SUM(outflow) FROM fact_station_period",
+            58311048,
+        ),
+        (
+            "od_station_inflow_total",
+            "SELECT SUM(inflow) FROM fact_station_period",
+            58311048,
+        ),
+        (
+            "od_same_station_fact_total",
+            "SELECT SUM(trip_count) FROM fact_same_station",
+            2392658,
+        ),
+        (
+            "od_cross_top20_trips",
+            """
+            SELECT SUM(trip_count)
+            FROM (
+                SELECT trip_count
+                FROM fact_od_flow
+                WHERE NOT same_station
+                ORDER BY trip_count DESC
+                LIMIT 20
+            )
+            """,
+            287116,
         ),
     ]
     rows: list[tuple[str, object, object, str]] = []

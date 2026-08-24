@@ -4,7 +4,7 @@
 
 **技术栈：** Python · pandas · DuckDB · SQL · ECharts/pyecharts · pytest
 
-[交互看板源码](dashboards/index.html) · [分析案例](docs/analysis_cases.md) · [指标字典](docs/metric_dictionary.md) · [数据质量报告](docs/data_quality_report.md) · [发布检查](docs/release_readiness.md) · [数据署名](NOTICE.md)
+[交互看板源码](dashboards/index.html) · [OD重构方案](docs/od_analysis_redesign_plan.md) · [分析案例](docs/analysis_cases.md) · [指标字典](docs/metric_dictionary.md) · [数据质量报告](docs/data_quality_report.md) · [发布检查](docs/release_readiness.md) · [数据署名](NOTICE.md)
 
 ![运营总览看板](docs/assets/overview_dashboard.png)
 
@@ -22,7 +22,7 @@
 | 日均骑行量 | 26,893.5 次 | 分析就绪骑行量 / 2,188 个完整日期 |
 | 平均需求峰值 | 17:00 | 按小时聚合后的六年平均值最高 |
 
-以上结果由 `python run_project.py` 重建，并由 18 项数仓校验与自动测试核对。生成结果位于 `output/query_results/`。
+以上结果由 `python run_project.py` 重建，并由 29 项数仓校验与自动测试核对。生成结果位于 `output/query_results/`。
 
 ## 三项核心发现
 
@@ -31,6 +31,21 @@
 3. **异常监控先服务于数据核查。** 日期解析回归测试修复了日月倒置；`source_batch` 审计进一步识别出 4 个官方源文件不完整日期，业务查询和看板统一排除这些日期，而不是把它们误判为需求暴跌。
 
 完整的“业务问题 -> 指标口径 -> SQL -> 发现 -> 建议 -> 限制”见 [分析案例](docs/analysis_cases.md)。
+
+## 全量 OD 重构
+
+初版站点看板使用 793,323 条开发样本，固定 Top20 会放大少数同站自环并掩盖跨站长尾。项目现已对 242 个源批次进行流式聚合，生成全量 OD 与站点分析表：
+
+| 指标 | 全量质量过滤结果 |
+|---|---:|
+| OD 有效行程 | 58,311,048 |
+| 跨站行程 | 55,918,390（95.90%） |
+| 同站归还 | 2,392,658（4.10%） |
+| OD 组合 | 632,144 |
+| 跨站 Top20 覆盖率 | 0.513% |
+| 候选规范站点 | 888 |
+
+全量结果证明：Top20 只能展示最强的少数连接，不能代表整体流动结构。详细决策、数据模型和看板改造顺序见 [OD 分析重构方案](docs/od_analysis_redesign_plan.md)。现有 Sankey 已先改为排除同站归还并显示样本覆盖率；后续页签将直接读取全量聚合表。
 
 ## 数据流程
 
@@ -44,7 +59,7 @@ TfL 行程批次 (242 CSV / 58.9M 行程)
 Open-Meteo 52,608 小时 -----------------------+----> DuckDB 质量过滤视图
 GOV.UK 公共假期 -------------------------------+          |
                                                           +--> 7 组 SQL 结果
-                                                          +--> 18 项质量校验
+                                                          +--> 29 项质量校验
                                                           +--> 5 个 ECharts 看板
 ```
 
@@ -77,7 +92,7 @@ warehouse/schema.sql    分析模型定义
 run_project.py          一键构建入口
 ```
 
-站点与路线看板使用 793,323 条行程级展示数据：固定种子选取 80 个文件、每个文件最多读取 10,000 行。这不是 58.9M 行程的全量明细分析，也不是严格的全体行级随机样本。仓库不包含约 17 GB 的原始文件。
+旧版站点图表使用 793,323 条行程级开发样本：固定种子选取 80 个文件、每个文件最多读取 10,000 行。该样本不再承担最终 OD 指标；全量流式聚合结果保存在 `data/processed/od/`，重建脚本为 `scripts/build_full_od_aggregates.py`。仓库不包含约 17 GB 的原始文件。
 
 ## 数据来源与许可
 

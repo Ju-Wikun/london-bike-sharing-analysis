@@ -33,10 +33,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
   <h1>London Santander Cycles — 站点与行程分析看板</h1>
   <p class="header-sub">基于 TfL Santander Cycles 行程数据（2020-2025）</p>
 </div>
-<div class="row-2col"><div class="col"><div id="ec_4c29214a7c2a4a" class="chart-cell" style="width:100%;height:440px;"></div>
+<div class="row-2col"><div class="col"><div id="ec_f54183461aa240" class="chart-cell" style="width:100%;height:440px;"></div>
 <script>
 (function(){
-  var dom = document.getElementById('ec_4c29214a7c2a4a');
+  var dom = document.getElementById('ec_f54183461aa240');
   var c = echarts.init(dom, null, {renderer:'canvas', locale:'ZH'});
   c.setOption({
     "backgroundColor": "#FFFFFF",
@@ -51,17 +51,6 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
     "aria": {
         "enabled": false
     },
-    "color": [
-        "#5470c6",
-        "#91cc75",
-        "#fac858",
-        "#ee6666",
-        "#73c0de",
-        "#3ba272",
-        "#fc8452",
-        "#9a60b4",
-        "#ea7ccc"
-    ],
     "series": [
         {
             "type": "bar",
@@ -103,6 +92,7 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
                 "position": "right",
                 "margin": 8,
                 "fontSize": 9,
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "itemStyle": {
@@ -134,7 +124,8 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "selector": false,
             "selectorPosition": "auto",
             "selectorItemGap": 7,
-            "selectorButtonGap": 10
+            "selectorButtonGap": 10,
+            "triggerEvent": false
         }
     ],
     "tooltip": {
@@ -152,8 +143,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
         "confine": false,
         "appendToBody": false,
         "transitionDuration": 0.4,
+        "displayTransition": true,
         "textStyle": {
-            "fontSize": 14
+            "fontSize": 14,
+            "richInheritPlainLabel": true
         },
         "borderWidth": 0,
         "padding": 5,
@@ -166,18 +159,18 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -197,24 +190,25 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "axisLabel": {
                 "show": true,
                 "margin": 8,
                 "fontSize": 8,
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -261,10 +255,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
   (window._ec = window._ec || []).push(c);
   new ResizeObserver(function(){ c.resize(); }).observe(dom);
 })();
-</script></div><div class="col"><div id="ec_43df4c2f256240" class="chart-cell" style="width:100%;height:440px;"></div>
+</script></div><div class="col"><div id="ec_a9d172787b1d46" class="chart-cell" style="width:100%;height:440px;"></div>
 <script>
 (function(){
-  var dom = document.getElementById('ec_43df4c2f256240');
+  var dom = document.getElementById('ec_a9d172787b1d46');
   var c = echarts.init(dom, null, {renderer:'canvas', locale:'ZH'});
   c.setOption({
     "backgroundColor": "#FFFFFF",
@@ -279,17 +273,6 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
     "aria": {
         "enabled": false
     },
-    "color": [
-        "#5470c6",
-        "#91cc75",
-        "#fac858",
-        "#ee6666",
-        "#73c0de",
-        "#3ba272",
-        "#fc8452",
-        "#9a60b4",
-        "#ea7ccc"
-    ],
     "series": [
         {
             "type": "bar",
@@ -375,6 +358,7 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "label": {
                 "show": false,
                 "margin": 8,
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "markLine": {
@@ -383,13 +367,12 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
                 "label": {
                     "show": true,
                     "margin": 8,
+                    "richInheritPlainLabel": true,
                     "valueAnimation": false
                 },
                 "lineStyle": {
-                    "show": true,
+                    "show": false,
                     "width": 2,
-                    "opacity": 1,
-                    "curveness": 0,
                     "type": "dashed",
                     "color": "#FF9800"
                 },
@@ -430,7 +413,8 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "selector": false,
             "selectorPosition": "auto",
             "selectorItemGap": 7,
-            "selectorButtonGap": 10
+            "selectorButtonGap": 10,
+            "triggerEvent": false
         }
     ],
     "tooltip": {
@@ -448,8 +432,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
         "confine": false,
         "appendToBody": false,
         "transitionDuration": 0.4,
+        "displayTransition": true,
         "textStyle": {
-            "fontSize": 14
+            "fontSize": 14,
+            "richInheritPlainLabel": true
         },
         "borderWidth": 0,
         "padding": 5,
@@ -462,24 +448,25 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "axisLabel": {
                 "show": true,
                 "margin": 8,
                 "interval": 9,
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -561,18 +548,18 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -604,10 +591,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
   new ResizeObserver(function(){ c.resize(); }).observe(dom);
 })();
 </script></div></div>
-<div class="row-2col"><div class="col"><div id="ec_a544ba8c34414e" class="chart-cell" style="width:100%;height:420px;"></div>
+<div class="row-2col"><div class="col"><div id="ec_8c1370c3aa1345" class="chart-cell" style="width:100%;height:420px;"></div>
 <script>
 (function(){
-  var dom = document.getElementById('ec_a544ba8c34414e');
+  var dom = document.getElementById('ec_8c1370c3aa1345');
   var c = echarts.init(dom, null, {renderer:'canvas', locale:'ZH'});
   c.setOption({
     "backgroundColor": "#FFFFFF",
@@ -622,17 +609,6 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
     "aria": {
         "enabled": false
     },
-    "color": [
-        "#5470c6",
-        "#91cc75",
-        "#fac858",
-        "#ee6666",
-        "#73c0de",
-        "#3ba272",
-        "#fc8452",
-        "#9a60b4",
-        "#ea7ccc"
-    ],
     "series": [
         {
             "type": "bar",
@@ -669,6 +645,7 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
                 "position": "right",
                 "margin": 8,
                 "fontSize": 8,
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "itemStyle": {
@@ -700,7 +677,8 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "selector": false,
             "selectorPosition": "auto",
             "selectorItemGap": 7,
-            "selectorButtonGap": 10
+            "selectorButtonGap": 10,
+            "triggerEvent": false
         }
     ],
     "tooltip": {
@@ -718,8 +696,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
         "confine": false,
         "appendToBody": false,
         "transitionDuration": 0.4,
+        "displayTransition": true,
         "textStyle": {
-            "fontSize": 14
+            "fontSize": 14,
+            "richInheritPlainLabel": true
         },
         "borderWidth": 0,
         "padding": 5,
@@ -732,18 +712,18 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -763,24 +743,25 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "axisLabel": {
                 "show": true,
                 "margin": 8,
                 "fontSize": 7,
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -822,10 +803,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
   (window._ec = window._ec || []).push(c);
   new ResizeObserver(function(){ c.resize(); }).observe(dom);
 })();
-</script></div><div class="col"><div id="ec_8944b6b923184d" class="chart-cell" style="width:100%;height:420px;"></div>
+</script></div><div class="col"><div id="ec_61be3265826349" class="chart-cell" style="width:100%;height:420px;"></div>
 <script>
 (function(){
-  var dom = document.getElementById('ec_8944b6b923184d');
+  var dom = document.getElementById('ec_61be3265826349');
   var c = echarts.init(dom, null, {renderer:'canvas', locale:'ZH'});
   c.setOption({
     "backgroundColor": "#FFFFFF",
@@ -840,17 +821,6 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
     "aria": {
         "enabled": false
     },
-    "color": [
-        "#5470c6",
-        "#91cc75",
-        "#fac858",
-        "#ee6666",
-        "#73c0de",
-        "#3ba272",
-        "#fc8452",
-        "#9a60b4",
-        "#ea7ccc"
-    ],
     "series": [
         {
             "type": "line",
@@ -965,16 +935,14 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "label": {
                 "show": false,
                 "margin": 8,
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "logBase": 10,
             "seriesLayoutBy": "column",
             "lineStyle": {
-                "show": true,
+                "show": false,
                 "width": 2.5,
-                "opacity": 1,
-                "curveness": 0,
-                "type": "solid",
                 "color": "#3F51B5"
             },
             "areaStyle": {
@@ -987,6 +955,7 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
                     "margin": 8,
                     "fontSize": 10,
                     "formatter": function(p){return p.name+'\n'+p.value.toLocaleString()+'\u6b21';},
+                    "richInheritPlainLabel": true,
                     "valueAnimation": false
                 },
                 "data": [
@@ -1024,7 +993,8 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "selector": false,
             "selectorPosition": "auto",
             "selectorItemGap": 7,
-            "selectorButtonGap": 10
+            "selectorButtonGap": 10,
+            "triggerEvent": false
         }
     ],
     "tooltip": {
@@ -1042,8 +1012,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
         "confine": false,
         "appendToBody": false,
         "transitionDuration": 0.4,
+        "displayTransition": true,
         "textStyle": {
-            "fontSize": 14
+            "fontSize": 14,
+            "richInheritPlainLabel": true
         },
         "borderWidth": 0,
         "padding": 5,
@@ -1056,20 +1028,20 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "min": 0,
             "max": 23,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -1115,18 +1087,18 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "scale": false,
             "nameLocation": "end",
             "nameGap": 15,
+            "nameTruncate": {},
+            "nameMoveOverlap": true,
             "inverse": false,
             "offset": 0,
             "splitNumber": 5,
             "minInterval": 0,
+            "silent": false,
+            "triggerEvent": false,
             "splitLine": {
                 "show": true,
                 "lineStyle": {
-                    "show": true,
-                    "width": 1,
-                    "opacity": 1,
-                    "curveness": 0,
-                    "type": "solid"
+                    "show": false
                 }
             },
             "animation": true,
@@ -1157,10 +1129,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
   new ResizeObserver(function(){ c.resize(); }).observe(dom);
 })();
 </script></div></div>
-<div class="row-full"><div id="ec_784a59ccd2ed49" class="chart-cell" style="width:100%;height:500px;"></div>
+<div class="row-full"><div id="ec_139a934eda3f40" class="chart-cell" style="width:100%;height:500px;"></div>
 <script>
 (function(){
-  var dom = document.getElementById('ec_784a59ccd2ed49');
+  var dom = document.getElementById('ec_139a934eda3f40');
   var c = echarts.init(dom, null, {renderer:'canvas', locale:'ZH'});
   c.setOption({
     "backgroundColor": "#FFFFFF",
@@ -1175,231 +1147,199 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
     "aria": {
         "enabled": false
     },
-    "color": [
-        "#5470c6",
-        "#91cc75",
-        "#fac858",
-        "#ee6666",
-        "#73c0de",
-        "#3ba272",
-        "#fc8452",
-        "#9a60b4",
-        "#ea7ccc"
-    ],
     "series": [
         {
             "type": "sankey",
             "name": "OD\u6d41\u5411",
             "data": [
                 {
-                    "name": "Ackroyd Drive, Bow "
+                    "name": "D|Ackroyd Drive, Bow"
                 },
                 {
-                    "name": "Albert Gate, Hyde Park"
+                    "name": "D|Albert Gate, Hyde Park"
                 },
                 {
-                    "name": "Albert Gate, Hyde Park "
+                    "name": "D|Black Lion Gate, Kensington Gardens"
                 },
                 {
-                    "name": "Aquatic Centre, Queen Eli"
+                    "name": "D|Clapham Common North Side, Clapham Common"
                 },
                 {
-                    "name": "Aquatic Centre, Queen Eli "
+                    "name": "D|Clapham Common Station, Clapham Common"
                 },
                 {
-                    "name": "Bayswater Road, Hyde Park"
+                    "name": "D|Furze Green, Bow"
                 },
                 {
-                    "name": "Bayswater Road, Hyde Park "
+                    "name": "D|Greyhound Road, Hammersmith"
                 },
                 {
-                    "name": "Black Lion Gate, Kensingt"
+                    "name": "D|Hyde Park Corner, Hyde Park"
                 },
                 {
-                    "name": "Black Lion Gate, Kensingt "
+                    "name": "D|Monier Road, Hackney Wick"
                 },
                 {
-                    "name": "Hyde Park Corner, Hyde Pa"
+                    "name": "D|Palace Gate, Kensington Gardens"
                 },
                 {
-                    "name": "Hyde Park Corner, Hyde Pa "
+                    "name": "D|Park Lane , Hyde Park"
                 },
                 {
-                    "name": "Maida Vale, Maida Vale"
+                    "name": "D|Queen's Gate, Kensington Gardens"
                 },
                 {
-                    "name": "Maida Vale, Maida Vale "
+                    "name": "D|Reardon Street, Wapping"
                 },
                 {
-                    "name": "Maplin Street, Mile End"
+                    "name": "D|Riverlight North, Nine Elms"
                 },
                 {
-                    "name": "Monier Road, Hackney Wick "
+                    "name": "D|Serpentine Car Park, Hyde Park"
                 },
                 {
-                    "name": "Nesham Street, Wapping"
+                    "name": "D|Triangle Car Park, Hyde Park"
                 },
                 {
-                    "name": "Palace Gate, Kensington G"
+                    "name": "D|Wapping Lane, Wapping"
                 },
                 {
-                    "name": "Palace Gate, Kensington G "
+                    "name": "O|Albert Gate, Hyde Park"
                 },
                 {
-                    "name": "Panton Street, West End"
+                    "name": "O|Barons Court Station, West Kensington"
                 },
                 {
-                    "name": "Panton Street, West End "
+                    "name": "O|Black Lion Gate, Kensington Gardens"
                 },
                 {
-                    "name": "Park Lane , Hyde Park"
+                    "name": "O|Clapham Common North Side, Clapham Common"
                 },
                 {
-                    "name": "Park Lane , Hyde Park "
+                    "name": "O|Clapham Common Station, Clapham Common"
                 },
                 {
-                    "name": "Park Road (Baker Street),"
+                    "name": "O|Hyde Park Corner, Hyde Park"
                 },
                 {
-                    "name": "Park Road (Baker Street), "
+                    "name": "O|Maplin Street, Mile End"
                 },
                 {
-                    "name": "Podium, Queen Elizabeth O"
+                    "name": "O|Nesham Street, Wapping"
                 },
                 {
-                    "name": "Podium, Queen Elizabeth O "
+                    "name": "O|Park Lane , Hyde Park"
                 },
                 {
-                    "name": "Queen's Gate, Kensington "
+                    "name": "O|Stratford Station, Stratford"
                 },
                 {
-                    "name": "Queen's Gate, Kensington  "
+                    "name": "O|Triangle Car Park, Hyde Park"
                 },
                 {
-                    "name": "Serpentine Car Park, Hyde"
-                },
-                {
-                    "name": "Serpentine Car Park, Hyde "
-                },
-                {
-                    "name": "Stratford Station, Stratf"
-                },
-                {
-                    "name": "Timber Lodge, Queen Eliza"
-                },
-                {
-                    "name": "Timber Lodge, Queen Eliza "
-                },
-                {
-                    "name": "Triangle Car Park, Hyde P"
-                },
-                {
-                    "name": "Triangle Car Park, Hyde P "
-                },
-                {
-                    "name": "Wapping Lane, Wapping "
+                    "name": "O|Vauxhall Cross, Vauxhall"
                 }
             ],
             "links": [
                 {
-                    "source": "Hyde Park Corner, Hyde Pa",
-                    "target": "Hyde Park Corner, Hyde Pa ",
-                    "value": 1499
-                },
-                {
-                    "source": "Triangle Car Park, Hyde P",
-                    "target": "Triangle Car Park, Hyde P ",
-                    "value": 741
-                },
-                {
-                    "source": "Podium, Queen Elizabeth O",
-                    "target": "Podium, Queen Elizabeth O ",
-                    "value": 658
-                },
-                {
-                    "source": "Park Lane , Hyde Park",
-                    "target": "Park Lane , Hyde Park ",
-                    "value": 654
-                },
-                {
-                    "source": "Black Lion Gate, Kensingt",
-                    "target": "Black Lion Gate, Kensingt ",
-                    "value": 590
-                },
-                {
-                    "source": "Albert Gate, Hyde Park",
-                    "target": "Albert Gate, Hyde Park ",
-                    "value": 471
-                },
-                {
-                    "source": "Aquatic Centre, Queen Eli",
-                    "target": "Aquatic Centre, Queen Eli ",
-                    "value": 346
-                },
-                {
-                    "source": "Maida Vale, Maida Vale",
-                    "target": "Maida Vale, Maida Vale ",
-                    "value": 291
-                },
-                {
-                    "source": "Hyde Park Corner, Hyde Pa",
-                    "target": "Triangle Car Park, Hyde P ",
+                    "source": "O|Hyde Park Corner, Hyde Park",
+                    "target": "D|Triangle Car Park, Hyde Park",
                     "value": 274
                 },
                 {
-                    "source": "Maplin Street, Mile End",
-                    "target": "Ackroyd Drive, Bow ",
+                    "source": "O|Maplin Street, Mile End",
+                    "target": "D|Ackroyd Drive, Bow",
                     "value": 263
                 },
                 {
-                    "source": "Queen's Gate, Kensington ",
-                    "target": "Queen's Gate, Kensington  ",
-                    "value": 258
-                },
-                {
-                    "source": "Palace Gate, Kensington G",
-                    "target": "Palace Gate, Kensington G ",
-                    "value": 255
-                },
-                {
-                    "source": "Bayswater Road, Hyde Park",
-                    "target": "Bayswater Road, Hyde Park ",
-                    "value": 253
-                },
-                {
-                    "source": "Nesham Street, Wapping",
-                    "target": "Wapping Lane, Wapping ",
+                    "source": "O|Nesham Street, Wapping",
+                    "target": "D|Wapping Lane, Wapping",
                     "value": 252
                 },
                 {
-                    "source": "Hyde Park Corner, Hyde Pa",
-                    "target": "Albert Gate, Hyde Park ",
+                    "source": "O|Hyde Park Corner, Hyde Park",
+                    "target": "D|Albert Gate, Hyde Park",
                     "value": 247
                 },
                 {
-                    "source": "Panton Street, West End",
-                    "target": "Panton Street, West End ",
-                    "value": 245
-                },
-                {
-                    "source": "Stratford Station, Stratf",
-                    "target": "Monier Road, Hackney Wick ",
+                    "source": "O|Stratford Station, Stratford",
+                    "target": "D|Monier Road, Hackney Wick",
                     "value": 239
                 },
                 {
-                    "source": "Park Road (Baker Street),",
-                    "target": "Park Road (Baker Street), ",
-                    "value": 226
+                    "source": "O|Hyde Park Corner, Hyde Park",
+                    "target": "D|Serpentine Car Park, Hyde Park",
+                    "value": 214
                 },
                 {
-                    "source": "Timber Lodge, Queen Eliza",
-                    "target": "Timber Lodge, Queen Eliza ",
-                    "value": 221
+                    "source": "O|Albert Gate, Hyde Park",
+                    "target": "D|Hyde Park Corner, Hyde Park",
+                    "value": 209
                 },
                 {
-                    "source": "Serpentine Car Park, Hyde",
-                    "target": "Serpentine Car Park, Hyde ",
-                    "value": 216
+                    "source": "O|Hyde Park Corner, Hyde Park",
+                    "target": "D|Black Lion Gate, Kensington Gardens",
+                    "value": 202
+                },
+                {
+                    "source": "O|Park Lane , Hyde Park",
+                    "target": "D|Hyde Park Corner, Hyde Park",
+                    "value": 197
+                },
+                {
+                    "source": "O|Vauxhall Cross, Vauxhall",
+                    "target": "D|Riverlight North, Nine Elms",
+                    "value": 194
+                },
+                {
+                    "source": "O|Triangle Car Park, Hyde Park",
+                    "target": "D|Hyde Park Corner, Hyde Park",
+                    "value": 191
+                },
+                {
+                    "source": "O|Hyde Park Corner, Hyde Park",
+                    "target": "D|Park Lane , Hyde Park",
+                    "value": 186
+                },
+                {
+                    "source": "O|Hyde Park Corner, Hyde Park",
+                    "target": "D|Queen's Gate, Kensington Gardens",
+                    "value": 175
+                },
+                {
+                    "source": "O|Black Lion Gate, Kensington Gardens",
+                    "target": "D|Palace Gate, Kensington Gardens",
+                    "value": 170
+                },
+                {
+                    "source": "O|Nesham Street, Wapping",
+                    "target": "D|Reardon Street, Wapping",
+                    "value": 168
+                },
+                {
+                    "source": "O|Barons Court Station, West Kensington",
+                    "target": "D|Greyhound Road, Hammersmith",
+                    "value": 166
+                },
+                {
+                    "source": "O|Clapham Common North Side, Clapham Common",
+                    "target": "D|Clapham Common Station, Clapham Common",
+                    "value": 163
+                },
+                {
+                    "source": "O|Clapham Common Station, Clapham Common",
+                    "target": "D|Clapham Common North Side, Clapham Common",
+                    "value": 159
+                },
+                {
+                    "source": "O|Black Lion Gate, Kensington Gardens",
+                    "target": "D|Hyde Park Corner, Hyde Park",
+                    "value": 155
+                },
+                {
+                    "source": "O|Maplin Street, Mile End",
+                    "target": "D|Furze Green, Bow",
+                    "value": 154
                 }
             ],
             "left": "5%",
@@ -1411,19 +1351,21 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "nodeAlign": "justify",
             "orient": "horizontal",
             "draggable": true,
+            "zoom": 1,
+            "roam": false,
             "label": {
                 "show": true,
                 "position": "right",
                 "margin": 8,
                 "fontSize": 8,
+                "formatter": function(p){var n=p.name.substring(2);return n.length>28?n.substring(0,28)+'\u2026':n;},
+                "richInheritPlainLabel": true,
                 "valueAnimation": false
             },
             "lineStyle": {
-                "show": true,
-                "width": 1,
+                "show": false,
                 "opacity": 0.3,
                 "curveness": 0.5,
-                "type": "solid",
                 "color": "source"
             }
         }
@@ -1452,7 +1394,8 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
             "selector": false,
             "selectorPosition": "auto",
             "selectorItemGap": 7,
-            "selectorButtonGap": 10
+            "selectorButtonGap": 10,
+            "triggerEvent": false
         }
     ],
     "tooltip": {
@@ -1470,8 +1413,10 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
         "confine": false,
         "appendToBody": false,
         "transitionDuration": 0.4,
+        "displayTransition": true,
         "textStyle": {
-            "fontSize": 14
+            "fontSize": 14,
+            "richInheritPlainLabel": true
         },
         "borderWidth": 0,
         "padding": 5,
@@ -1480,8 +1425,9 @@ body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:#F0F4F8;p
     "title": [
         {
             "show": true,
-            "text": "\u7ad9\u70b9\u95f4 OD \u6d41\u5411\u56fe\uff08Top 20 \u8def\u7ebf\uff09",
+            "text": "\u8de8\u7ad9 OD \u6d41\u5411\uff08\u6837\u672c Top 20\uff09",
             "target": "blank",
+            "subtext": "\u5df2\u6392\u9664\u540c\u7ad9\u5f52\u8fd8\uff1b\u8986\u76d6\u6837\u672c\u8de8\u7ad9\u884c\u7a0b 0.52%",
             "subtarget": "blank",
             "padding": 5,
             "itemGap": 10,

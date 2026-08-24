@@ -17,3 +17,14 @@ incomplete_source_dates,4,4,PASS
 analysis_ready_hours,52506,52506,PASS
 analysis_ready_trips,58842971,58842971,PASS
 clock_hours_without_ride_record,82,82,PASS
+od_candidate_stations,888,888,PASS
+od_station_alias_rows,2902,2902,PASS
+od_station_alias_review_rows,97,97,PASS
+od_pairs,632144,632144,PASS
+od_analysis_ready_trips,58311048,58311048,PASS
+od_same_station_trips,2392658,2392658,PASS
+od_cross_station_trips,55918390,55918390,PASS
+od_station_outflow_total,58311048,58311048,PASS
+od_station_inflow_total,58311048,58311048,PASS
+od_same_station_fact_total,2392658,2392658,PASS
+od_cross_top20_trips,287116,287116,PASS

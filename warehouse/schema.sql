@@ -3,6 +3,12 @@ DROP VIEW IF EXISTS analytics_hourly;
 DROP TABLE IF EXISTS hour_coverage_exception;
 DROP TABLE IF EXISTS known_data_anomaly;
 DROP TABLE IF EXISTS source_batch;
+DROP TABLE IF EXISTS od_build_metric;
+DROP TABLE IF EXISTS fact_same_station;
+DROP TABLE IF EXISTS fact_station_period;
+DROP TABLE IF EXISTS fact_od_flow;
+DROP TABLE IF EXISTS station_alias;
+DROP TABLE IF EXISTS dim_station;
 DROP TABLE IF EXISTS fact_system_hourly;
 DROP TABLE IF EXISTS fact_weather_hourly;
 DROP TABLE IF EXISTS dim_holiday;
@@ -74,4 +80,66 @@ CREATE TABLE known_data_anomaly (
     observed_hours INTEGER NOT NULL,
     missing_clock_hours INTEGER NOT NULL,
     reason VARCHAR NOT NULL
+);
+
+CREATE TABLE dim_station (
+    station_key VARCHAR PRIMARY KEY,
+    canonical_name VARCHAR NOT NULL,
+    normalized_name VARCHAR NOT NULL,
+    source_id_count INTEGER NOT NULL,
+    alias_count INTEGER NOT NULL,
+    first_seen TIMESTAMP,
+    last_seen TIMESTAMP,
+    endpoint_mentions BIGINT NOT NULL,
+    mapping_status VARCHAR NOT NULL
+);
+
+CREATE TABLE station_alias (
+    station_key VARCHAR NOT NULL,
+    normalized_name VARCHAR NOT NULL,
+    source_station_id VARCHAR,
+    original_name VARCHAR NOT NULL,
+    endpoint_mentions BIGINT NOT NULL,
+    first_seen TIMESTAMP,
+    last_seen TIMESTAMP,
+    source_id_key_count INTEGER NOT NULL,
+    requires_review BOOLEAN NOT NULL
+);
+
+CREATE TABLE fact_od_flow (
+    start_key VARCHAR NOT NULL,
+    end_key VARCHAR NOT NULL,
+    same_station BOOLEAN NOT NULL,
+    trip_count BIGINT NOT NULL,
+    duration_sum_min DOUBLE NOT NULL,
+    duration_le_3m_count BIGINT NOT NULL,
+    duration_3_15m_count BIGINT NOT NULL,
+    duration_gt_15m_count BIGINT NOT NULL,
+    avg_duration_min DOUBLE NOT NULL
+);
+
+CREATE TABLE fact_station_period (
+    station_key VARCHAR NOT NULL,
+    day_type VARCHAR NOT NULL,
+    hour_of_day INTEGER NOT NULL,
+    outflow BIGINT NOT NULL,
+    inflow BIGINT NOT NULL,
+    net_inflow BIGINT NOT NULL
+);
+
+CREATE TABLE fact_same_station (
+    station_key VARCHAR NOT NULL,
+    day_type VARCHAR NOT NULL,
+    hour_of_day INTEGER NOT NULL,
+    trip_count BIGINT NOT NULL,
+    duration_sum_min DOUBLE NOT NULL,
+    duration_le_3m_count BIGINT NOT NULL,
+    duration_3_15m_count BIGINT NOT NULL,
+    duration_gt_15m_count BIGINT NOT NULL,
+    avg_duration_min DOUBLE NOT NULL
+);
+
+CREATE TABLE od_build_metric (
+    metric VARCHAR PRIMARY KEY,
+    value DOUBLE NOT NULL
 );

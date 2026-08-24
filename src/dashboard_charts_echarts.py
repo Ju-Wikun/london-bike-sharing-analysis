@@ -6,7 +6,7 @@
 
 from __future__ import annotations
 
-import uuid
+from itertools import count
 from pathlib import Path
 
 import numpy as np
@@ -46,8 +46,11 @@ MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 
+_CHART_IDS = count(1)
+
+
 def _cid() -> str:
-    return "ec_" + uuid.uuid4().hex[:14]
+    return f"ec_{next(_CHART_IDS):04d}"
 
 
 def _chart_fragment(chart, height: str = "420px") -> str:
@@ -660,16 +663,19 @@ def _chart_top_routes(trip_df: pd.DataFrame) -> Bar:
 
 
 def _chart_od_sankey(trip_df: pd.DataFrame, top_n: int = 20) -> Sankey:
-    """站点间 OD 流向 Sankey 图（Top N 站对）。"""
+    """跨站 OD 流向 Sankey 图（样本 Top N 站对）。"""
+    valid = trip_df.dropna(subset=["start_station", "end_station"])
+    cross_station = valid[valid["start_station"] != valid["end_station"]]
     routes = (
-        trip_df.dropna(subset=["start_station", "end_station"])
+        cross_station
         .groupby(["start_station", "end_station"]).size()
         .nlargest(top_n).reset_index(name="count")
     )
+    coverage = routes["count"].sum() / max(len(cross_station), 1)
     nodes_set: set[str] = set()
     for _, r in routes.iterrows():
-        s = str(r["start_station"])[:25]
-        e = str(r["end_station"])[:25] + " "
+        s = "O|" + str(r["start_station"])
+        e = "D|" + str(r["end_station"])
         nodes_set.add(s)
         nodes_set.add(e)
 
@@ -677,8 +683,8 @@ def _chart_od_sankey(trip_df: pd.DataFrame, top_n: int = 20) -> Sankey:
     links = []
     for _, r in routes.iterrows():
         links.append({
-            "source": str(r["start_station"])[:25],
-            "target": str(r["end_station"])[:25] + " ",
+            "source": "O|" + str(r["start_station"]),
+            "target": "D|" + str(r["end_station"]),
             "value": int(r["count"]),
         })
 
@@ -686,11 +692,21 @@ def _chart_od_sankey(trip_df: pd.DataFrame, top_n: int = 20) -> Sankey:
     sankey.add(
         "OD流向", nodes, links,
         linestyle_opt=opts.LineStyleOpts(opacity=0.3, curve=0.5, color="source"),
-        label_opts=opts.LabelOpts(font_size=8, position="right"),
+        label_opts=opts.LabelOpts(
+            font_size=8,
+            position="right",
+            formatter=JsCode(
+                "function(p){var n=p.name.substring(2);"
+                "return n.length>28?n.substring(0,28)+'…':n;}"
+            ),
+        ),
         node_width=20, node_gap=12,
     )
     sankey.set_global_opts(
-        title_opts=opts.TitleOpts(title=f"站点间 OD 流向图（Top {top_n} 路线）"),
+        title_opts=opts.TitleOpts(
+            title=f"跨站 OD 流向（样本 Top {top_n}）",
+            subtitle=f"已排除同站归还；覆盖样本跨站行程 {coverage:.2%}",
+        ),
         tooltip_opts=opts.TooltipOpts(trigger="item"),
     )
     return sankey

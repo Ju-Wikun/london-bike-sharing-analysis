@@ -55,6 +55,20 @@ def test_build_and_core_quality(tmp_path: Path) -> None:
             "source_gap": 55,
             "nonexistent_local_hour": 6,
         }
+        assert conn.execute("SELECT COUNT(*) FROM dim_station").fetchone()[0] == 888
+        assert conn.execute("SELECT COUNT(*) FROM fact_od_flow").fetchone()[0] == 632144
+        assert conn.execute("SELECT SUM(trip_count) FROM fact_od_flow").fetchone()[0] == 58311048
+        assert conn.execute(
+            "SELECT SUM(trip_count) FROM fact_od_flow WHERE same_station"
+        ).fetchone()[0] == 2392658
+        assert conn.execute(
+            "SELECT SUM(trip_count) FROM fact_od_flow WHERE NOT same_station"
+        ).fetchone()[0] == 55918390
+        assert conn.execute("SELECT SUM(outflow) FROM fact_station_period").fetchone()[0] == 58311048
+        assert conn.execute("SELECT SUM(inflow) FROM fact_station_period").fetchone()[0] == 58311048
+        assert conn.execute(
+            "SELECT COUNT(*) FROM station_alias WHERE requires_review"
+        ).fetchone()[0] == 97
     finally:
         conn.close()
 
