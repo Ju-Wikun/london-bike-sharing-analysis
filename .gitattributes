@@ -1,0 +1,5 @@
+* text=auto eol=lf
+dashboards/echarts/*.html linguist-generated=true
+data/**/*.csv linguist-generated=true
+output/query_results/*.csv linguist-generated=true
+*.png -text

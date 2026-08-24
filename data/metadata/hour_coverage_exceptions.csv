@@ -1,0 +1,83 @@
+﻿ts,classification,reason
+2020-03-29 01:00:00,nonexistent_local_hour,Europe/London spring-forward hour does not exist in local trip time.
+2021-03-28 01:00:00,nonexistent_local_hour,Europe/London spring-forward hour does not exist in local trip time.
+2022-03-27 01:00:00,nonexistent_local_hour,Europe/London spring-forward hour does not exist in local trip time.
+2022-09-10 00:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 02:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 03:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 04:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 05:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 06:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 08:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 09:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 10:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 11:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 12:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 14:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 15:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 16:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 17:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 18:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 19:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 20:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 21:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 22:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-10 23:00:00,source_gap,Official batch contains only 4 trip records for the date.
+2022-09-11 00:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 02:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 03:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 04:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 05:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 06:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 07:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 09:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 11:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 13:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 14:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 15:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 16:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 17:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 18:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 19:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 20:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 21:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-11 22:00:00,source_gap,Official batch contains only 7 trip records for the date.
+2022-09-12 00:00:00,source_gap,Official batch starts at 05:02; hours 00:00-04:59 are absent.
+2022-09-12 01:00:00,source_gap,Official batch starts at 05:02; hours 00:00-04:59 are absent.
+2022-09-12 02:00:00,source_gap,Official batch starts at 05:02; hours 00:00-04:59 are absent.
+2022-09-12 03:00:00,source_gap,Official batch starts at 05:02; hours 00:00-04:59 are absent.
+2022-09-12 04:00:00,source_gap,Official batch starts at 05:02; hours 00:00-04:59 are absent.
+2022-09-21 01:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2022-09-21 02:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2022-09-21 03:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2022-10-14 01:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2022-11-22 01:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2022-11-22 02:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2022-11-22 03:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-01-13 01:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-01-13 02:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-01-13 03:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-02-15 00:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-02-15 01:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-02-15 02:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-02-21 01:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-02-21 02:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-03-26 01:00:00,nonexistent_local_hour,Europe/London spring-forward hour does not exist in local trip time.
+2023-08-22 01:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-08-22 02:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2023-08-22 03:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2024-02-13 02:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2024-02-13 03:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2024-03-31 01:00:00,nonexistent_local_hour,Europe/London spring-forward hour does not exist in local trip time.
+2024-06-11 03:00:00,confirmed_zero_trip_hour,No trip rows in an otherwise complete official source batch.
+2025-03-30 01:00:00,nonexistent_local_hour,Europe/London spring-forward hour does not exist in local trip time.
+2025-08-05 01:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 02:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 03:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 04:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 05:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 06:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 07:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 08:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 10:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.
+2025-08-05 11:00:00,source_gap,Official batch contains only 188 trip records with large intraday gaps.

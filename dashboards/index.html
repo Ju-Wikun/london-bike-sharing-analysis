@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>伦敦共享单车运营分析</title>
+  <style>
+    :root { color-scheme: light; font-family: Arial, "Microsoft YaHei", sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #edf1f6; color: #182238; }
+    header { height: 64px; display: flex; align-items: center; gap: 24px; padding: 0 24px; background: #fff; border-bottom: 1px solid #d8dee9; }
+    h1 { margin: 0; font-size: 19px; white-space: nowrap; }
+    nav { display: flex; align-self: stretch; overflow-x: auto; }
+    button { min-width: 92px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: #4c596f; cursor: pointer; font-size: 14px; }
+    button:hover { background: #f5f7fa; color: #1f398f; }
+    button[aria-selected="true"] { border-bottom-color: #3456c5; color: #1f398f; font-weight: 700; }
+    iframe { display: block; width: 100%; height: calc(100vh - 64px); border: 0; background: #edf1f6; }
+    @media (max-width: 760px) {
+      header { height: auto; min-height: 64px; align-items: flex-start; flex-direction: column; gap: 4px; padding: 12px 16px 0; }
+      h1 { font-size: 17px; }
+      nav { width: 100%; height: 42px; }
+      button { min-width: 80px; }
+      iframe { height: calc(100vh - 106px); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>伦敦共享单车运营分析</h1>
+    <nav aria-label="分析视图">
+      <button type="button" data-page="echarts/echarts_01_overview.html" aria-selected="true">运营总览</button>
+      <button type="button" data-page="echarts/echarts_02_time_pattern.html" aria-selected="false">时间模式</button>
+      <button type="button" data-page="echarts/echarts_03_environmental.html" aria-selected="false">环境因素</button>
+      <button type="button" data-page="echarts/echarts_04_station_trip.html" aria-selected="false">站点行程</button>
+      <button type="button" data-page="echarts/echarts_05_season.html" aria-selected="false">季节构成</button>
+    </nav>
+  </header>
+  <iframe title="共享单车分析看板" src="echarts/echarts_01_overview.html"></iframe>
+  <script>
+    const frame = document.querySelector("iframe");
+    document.querySelectorAll("button[data-page]").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("button[data-page]").forEach((item) => item.setAttribute("aria-selected", "false"));
+        button.setAttribute("aria-selected", "true");
+        frame.src = button.dataset.page;
+      });
+    });
+  </script>
+</body>
+</html>

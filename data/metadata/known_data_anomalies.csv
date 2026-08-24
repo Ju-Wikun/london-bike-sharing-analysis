@@ -1,0 +1,5 @@
+﻿date,quality_status,observed_trip_records,observed_hours,missing_clock_hours,reason
+2022-09-10,incomplete_source,4,3,21,Official batch contains only 4 trip records for the date.
+2022-09-11,incomplete_source,7,5,19,Official batch contains only 7 trip records for the date.
+2022-09-12,incomplete_source,22301,19,5,Official batch starts at 05:02; hours 00:00-04:59 are absent.
+2025-08-05,incomplete_source,188,14,10,Official batch contains only 188 trip records with large intraday gaps.

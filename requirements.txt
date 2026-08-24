@@ -1,0 +1,5 @@
+duckdb>=1.1,<2
+numpy>=1.26,<3
+pandas>=2.2,<4
+pyecharts>=2.0,<3
+pytest>=8,<10
