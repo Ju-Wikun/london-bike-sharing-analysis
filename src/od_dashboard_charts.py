@@ -43,6 +43,7 @@ def _structure_bar(metrics: dict[str, float]) -> Bar:
     )
     chart.set_global_opts(
         title_opts=opts.TitleOpts(title="总体空间行为结构"),
+        legend_opts=opts.LegendOpts(pos_top=34),
         tooltip_opts=opts.TooltipOpts(trigger="axis", axis_pointer_type="shadow"),
         yaxis_opts=opts.AxisOpts(name="占比（%）", max_=100),
     )
@@ -60,6 +61,7 @@ def _coverage_bar(coverage: pd.DataFrame) -> Bar:
     )
     chart.set_global_opts(
         title_opts=opts.TitleOpts(title="Top-N 代表性"),
+        legend_opts=opts.LegendOpts(pos_top=34),
         tooltip_opts=opts.TooltipOpts(trigger="axis"),
         xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=25)),
         yaxis_opts=opts.AxisOpts(name="覆盖率（%）"),
@@ -165,7 +167,7 @@ def flow_structure_dashboard(
         ("Top20 覆盖", f"{top20:.3%}", "#D81B60"),
     ]
     sections = [
-        _kpi_section(kpis),
+        _kpi_section([(value, label, color) for label, value, color in kpis]),
         (
             _chart_fragment(_structure_bar(metrics), height="350px"),
             _chart_fragment(_coverage_bar(coverage), height="350px"),
@@ -379,7 +381,7 @@ def station_diagnostics_dashboard(
         ("最大净流出", _short(largest_out["canonical_name"], 22), "#E53935"),
     ]
     sections = [
-        _kpi_section(kpis),
+        _kpi_section([(value, label, color) for label, value, color in kpis]),
         (
             _chart_fragment(_station_balance_bar(balance), height="560px"),
             _chart_fragment(_throughput_bar(balance), height="560px"),
