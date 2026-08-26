@@ -2,9 +2,13 @@
 
 [![quality](https://github.com/Ju-Wikun/london-bike-sharing-analysis/actions/workflows/quality.yml/badge.svg)](https://github.com/Ju-Wikun/london-bike-sharing-analysis/actions/workflows/quality.yml)
 
-基于 2020-2025 年 TfL Santander Cycles 行程、Open-Meteo 小时天气和英国公共假期数据，构建可复现的 DuckDB 分析数仓、SQL 分析案例和 5 个 ECharts 看板。项目重点不是堆图表，而是把业务问题、指标口径、数据质量、查询结果和解释边界连成一条可核验的数据链路。
+基于 2020-2025 年 TfL Santander Cycles 行程、Open-Meteo 小时天气和英国公共假期数据，构建可复现的 DuckDB 分析数仓、SQL 分析案例和 6 个 ECharts 视图。项目重点不是堆图表，而是把业务问题、指标口径、数据质量、查询结果和解释边界连成一条可核验的数据链路。
 
 **技术栈：** Python · pandas · DuckDB · SQL · ECharts/pyecharts · pytest
+
+**在线演示：[打开六视图交互看板](https://ju-wikun.github.io/london-bike-sharing-analysis/)**
+
+公开站点只发布当前六个视图及本地 ECharts 运行库；原始行程、数据库和开发环境不进入 Pages 部署包。每次 main 更新须先通过构建与测试再部署。
 
 [交互看板源码](dashboards/index.html) · [OD重构方案](docs/od_analysis_redesign_plan.md) · [分析案例](docs/analysis_cases.md) · [指标字典](docs/metric_dictionary.md) · [数据质量报告](docs/data_quality_report.md) · [发布检查](docs/release_readiness.md) · [数据署名](NOTICE.md)
 
@@ -64,9 +68,9 @@ TfL 行程批次 (242 CSV / 58.9M 行程)
 时钟差异分类 (零骑行/源缺口/夏令时) ----------+
 Open-Meteo 52,608 小时 -----------------------+----> DuckDB 质量过滤视图
 GOV.UK 公共假期 -------------------------------+          |
-                                                          +--> 7 组 SQL 结果
+                                                          +--> 12 组 SQL 结果
                                                           +--> 29 项质量校验
-                                                          +--> 5 个 ECharts 看板
+                                                          +--> 6 个 ECharts 视图
 ```
 
 日期解析按字符串记法拆分：ISO 日期使用 year-first，斜杠日期使用 day-first，避免 pandas 对 `2024-01-08` 和 `01/08/2024` 产生相反解释。回归测试覆盖这两种格式。
@@ -88,10 +92,10 @@ python -m http.server 8000
 
 ```text
 data/                   小型输入及批次/时钟/异常审计元数据
-dashboards/             统一入口与 5 个 ECharts 看板
+dashboards/             统一入口与 6 个 ECharts 视图
 docs/                   指标、数据字典、分析案例、质量与发布说明
 scripts/                原始 TfL 批次审计脚本（原始数据不入库）
-sql/                    7 组可执行 SQL 分析
+sql/                    12 组可执行 SQL 分析
 src/                    日期解析、数仓构建、看板生成
 tests/                  构建、口径与混合日期格式回归测试
 warehouse/schema.sql    分析模型定义

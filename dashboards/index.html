@@ -7,20 +7,22 @@
   <style>
     :root { color-scheme: light; font-family: Arial, "Microsoft YaHei", sans-serif; }
     * { box-sizing: border-box; }
-    body { margin: 0; background: #edf1f6; color: #182238; }
+    body { margin: 0; height: 100vh; height: 100dvh; display: flex; flex-direction: column; background: #edf1f6; color: #182238; }
     header { height: 64px; display: flex; align-items: center; gap: 24px; padding: 0 24px; background: #fff; border-bottom: 1px solid #d8dee9; }
     h1 { margin: 0; font-size: 19px; white-space: nowrap; }
-    nav { display: flex; align-self: stretch; overflow-x: auto; }
+    header { flex-shrink: 0; }
+    nav { display: flex; flex: 1; min-width: 0; align-self: stretch; overflow-x: auto; }
     button { min-width: 92px; border: 0; border-bottom: 3px solid transparent; background: transparent; color: #4c596f; cursor: pointer; font-size: 14px; }
     button:hover { background: #f5f7fa; color: #1f398f; }
     button[aria-selected="true"] { border-bottom-color: #3456c5; color: #1f398f; font-weight: 700; }
-    iframe { display: block; width: 100%; height: calc(100vh - 64px); border: 0; background: #edf1f6; }
+    iframe { display: block; flex: 1; min-height: 0; width: 100%; border: 0; background: #edf1f6; }
+    footer { flex-shrink: 0; padding: 6px 16px; background: #fff; font-size: 11px; line-height: 1.6; color: #586376; }
+    footer a { color: #3456a0; text-decoration: none; margin-right: 12px; }
     @media (max-width: 760px) {
       header { height: auto; min-height: 64px; align-items: flex-start; flex-direction: column; gap: 4px; padding: 12px 16px 0; }
       h1 { font-size: 17px; }
-      nav { width: 100%; height: 42px; }
+      nav { flex: none; width: 100%; height: 42px; }
       button { min-width: 80px; }
-      iframe { height: calc(100vh - 106px); }
     }
   </style>
 </head>
@@ -37,6 +39,11 @@
     </nav>
   </header>
   <iframe title="共享单车分析看板" src="echarts/echarts_01_overview.html"></iframe>
+  <footer>
+    <a href="https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service" target="_blank" rel="noopener">Powered by TfL Open Data</a>
+    <a href="https://open-meteo.com/" target="_blank" rel="noopener">Weather data by Open-Meteo</a>
+    <a href="https://github.com/Ju-Wikun/london-bike-sharing-analysis/blob/main/NOTICE.md" target="_blank" rel="noopener">源码与数据声明</a>
+  </footer>
   <script>
     const frame = document.querySelector("iframe");
     document.querySelectorAll("button[data-page]").forEach((button) => {

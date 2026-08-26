@@ -1,6 +1,7 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+output/pages/
 .venv/
 .local_deps/
 .env

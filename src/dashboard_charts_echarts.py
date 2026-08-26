@@ -32,7 +32,7 @@ from .preprocess_london import (
     weekday_daily,
 )
 
-_ECHARTS_CDN = "https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"
+_ECHARTS_CDN = "../vendor/echarts.min.js"
 _ECHARTS_FALLBACK = "https://cdn.bootcdn.net/ajax/libs/echarts/5.5.1/echarts.min.js"
 
 _HEADER_BG = "#1A237E"
@@ -132,6 +132,13 @@ body{{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:{_DASH_B
 .col{{flex:1;min-width:0}}
 .chart-cell{{background:#fff;border-radius:6px;
              box-shadow:0 1px 4px rgba(0,0,0,.1);padding:4px}}
+@media(max-width:760px){{
+  .row-2col{{flex-direction:column}}
+  .kpi-row{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .kpi-card{{min-width:0;padding:12px}}
+  .kpi-value{{font-size:22px;overflow-wrap:anywhere}}
+  .header h1{{font-size:16px}}
+}}
 </style>
 </head>
 <body>
